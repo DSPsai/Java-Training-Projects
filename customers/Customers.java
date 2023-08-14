@@ -1,7 +1,5 @@
 package com.bankingServices.dsp.customers;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -13,8 +11,8 @@ public class Customers {
         return customers;
     }
 
-    public void add_customer(String name) {
-        Customer new_customer = new Customer(name);
+    public void add_customer(String name, String password) {
+        Customer new_customer = new Customer(name, password);
         customers.add(new_customer);
     }
 
@@ -25,6 +23,7 @@ public class Customers {
         }
         return this.customers.get(id-1);
     }
+
 
     public int length() {
         return Customer.length();

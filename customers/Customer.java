@@ -2,20 +2,34 @@ package com.bankingServices.dsp.customers;
 import com.bankingServices.dsp.bank.Bank;
 import com.bankingServices.dsp.transactions.Transactions;
 
+import java.util.Scanner;
+
 public class Customer extends Bank implements CustomerInterface {
     public static int count = 1;
     public String customer_name;
     public int customer_id;
     private long customer_balance;
-
+    private String password;
     private final Transactions transactions=new Transactions();
+    private Scanner scn = new Scanner(System.in);
 
-    public Customer(String customer_name) {
+    public Customer(String customer_name, String password) {
         this.customer_name = customer_name;
+        this.password = password;
         this.customer_id=count;
         count += 1;
     }
 
+    public boolean authenticate(){
+        System.out.println("Please enter Password of Customer "+this.customer_id+" : ");
+        String password_input=this.scn.nextLine();
+        if(password_input.equals(this.password)){
+            return true;
+        }else{
+            System.out.println("Wrong Password, Please try again..!");
+            return false;
+        }
+    }
     public long getCustomer_balance() {
         return this.customer_balance;
     }
